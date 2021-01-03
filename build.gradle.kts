@@ -33,7 +33,7 @@ repositories {
 
 dependencies {
     compileOnly("com.destroystokyo.paper:paper-api:1.16.4-R0.1-SNAPSHOT")
-    implementation("org.bstats:bstats-bukkit:1.7")
+    implementation("org.bstats:bstats-bukkit:1.8")
     implementation(kotlin("stdlib-jdk8"))
 }
 
@@ -42,7 +42,7 @@ version = "1.0.0"
 tasks.named<ShadowJar>("shadowJar") {
     archiveClassifier.set(null as String?)
     dependencies {
-        include(dependency("org.bstats:bstats-bukkit:1.7"))
+        include(dependency("org.bstats:bstats-bukkit:1.8"))
         relocate("org.bstats", "de.n0tmyfaultog.metrics")
     }
 }
