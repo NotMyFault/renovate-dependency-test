@@ -8,7 +8,7 @@ plugins {
     id("org.cadixdev.licenser") version "0.5.0"
     id("net.minecrell.plugin-yml.bukkit") version "0.3.0"
     id("com.github.johnrengelman.shadow") version "6.1.0"
-    kotlin("jvm") version "1.4.21"
+    kotlin("jvm") version "1.4.30"
 }
 
 configure<JavaPluginConvention> {
