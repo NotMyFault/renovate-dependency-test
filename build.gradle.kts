@@ -1,13 +1,11 @@
 import org.cadixdev.gradle.licenser.LicenseExtension
 import net.minecrell.pluginyml.bukkit.BukkitPluginDescription
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
     id("java")
     id("org.cadixdev.licenser") version "0.5.0"
     id("net.minecrell.plugin-yml.bukkit") version "0.3.0"
-    id("com.github.johnrengelman.shadow") version "6.1.0"
     kotlin("jvm") version "1.4.21"
 }
 
@@ -21,31 +19,25 @@ tasks.withType<JavaCompile> {
 }
 
 repositories {
+    mavenCentral()
     maven {
         name = "Paper"
         url = uri("https://papermc.io/repo/repository/maven-public/")
-    }
-    maven {
-        name = "bStats"
-        url = uri("https://repo.codemc.org/repository/maven-public")
+        content {
+            includeGroup("com.destroystokyo.paper")
+        }
     }
 }
 
 dependencies {
-    compileOnly("com.destroystokyo.paper:paper-api:1.16.4-R0.1-SNAPSHOT")
-    implementation("org.bstats:bstats-bukkit:1.7")
+    compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
     implementation(kotlin("stdlib-jdk8"))
+    // Testing renovate from here
+    compileOnly("net.kyori:adventure-api:4.5.1")
+    testCompileOnly("net.kyori:adventure-api:4.5.1")
 }
 
-version = "1.0.0"
-
-tasks.named<ShadowJar>("shadowJar") {
-    archiveClassifier.set(null as String?)
-    dependencies {
-        include(dependency("org.bstats:bstats-bukkit:1.7"))
-        relocate("org.bstats", "de.n0tmyfaultog.metrics")
-    }
-}
+version = "1.0.1"
 
 configure<LicenseExtension> {
     header = rootProject.file("LICENSE-HEADER")
@@ -54,7 +46,7 @@ configure<LicenseExtension> {
 
 bukkit {
     name = "RenovateDependencyTest"
-    main = "de.n0tmyfaultog.renovatedependencytest.RenovateDependencyTestPlugin"
+    main = "de.notmyfault.renovatedependencytest.RenovateDependencyTestPlugin"
     author = "NotMyFault"
     apiVersion = "1.13"
     version = rootProject.version.toString()
@@ -68,8 +60,4 @@ compileKotlin.kotlinOptions {
 val compileTestKotlin: KotlinCompile by tasks
 compileTestKotlin.kotlinOptions {
     jvmTarget = "11"
-}
-
-tasks.named("build").configure {
-    dependsOn("shadowJar")
 }

@@ -1,6 +1,6 @@
 /*
- * RenovateDependencyTest - An example plugin testing renovate to shade bStats properly
- * Copyright (C) NotMyFault 2020
+ * RenovateDependencyTest - An example plugin testing renovate
+ * Copyright (C) NotMyFault 2021
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,13 +18,11 @@
 package de.n0tmyfaultog.renovatedependencytest
 
 import org.bukkit.plugin.java.JavaPlugin
-import org.bstats.bukkit.Metrics
 
 class RenovateDependencyTestPlugin : JavaPlugin() {
 
-    private val BSTATS_ID = 9667
 
     override fun onEnable() {
-        val metrics = Metrics(this, BSTATS_ID)
+        logger.info("Woop! You are running something you shouldn't run my friend.")
     }
 }
