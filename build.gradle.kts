@@ -33,8 +33,8 @@ dependencies {
     compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
     implementation(kotlin("stdlib-jdk8"))
     // Testing renovate from here
-    compileOnly("net.kyori:adventure-api:4.5.1")
-    testCompileOnly("net.kyori:adventure-api:4.5.1")
+    compileOnly("net.kyori:adventure-api:4.7.0")
+    testCompileOnly("net.kyori:adventure-api:4.7.0")
 }
 
 version = "1.0.1"
