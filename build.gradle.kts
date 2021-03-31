@@ -4,9 +4,9 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("java")
-    id("org.cadixdev.licenser") version "0.5.0"
+    id("org.cadixdev.licenser") version "0.5.1"
     id("net.minecrell.plugin-yml.bukkit") version "0.3.0"
-    kotlin("jvm") version "1.4.30"
+    kotlin("jvm") version "1.4.32"
 }
 
 configure<JavaPluginConvention> {
@@ -27,14 +27,23 @@ repositories {
             includeGroup("com.destroystokyo.paper")
         }
     }
+    maven {
+        name = "EngineHub"
+        url = uri("https://maven.enginehub.org/repo/")
+    }
 }
+
+val pistonVersion = "0.5.6"
 
 dependencies {
     compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
     implementation(kotlin("stdlib-jdk8"))
     // Testing renovate from here
-    compileOnly("net.kyori:adventure-api:4.5.1")
-    testCompileOnly("net.kyori:adventure-api:4.5.1")
+    compileOnly("org.enginehub.piston:default-impl:${pistonVersion}")
+    compileOnly("org.enginehub.piston:core:${pistonVersion}")
+    compileOnly("org.enginehub.piston.core-ap:processor:${pistonVersion}")
+    compileOnly("org.enginehub.piston.core-ap:annotations:${pistonVersion}")
+    compileOnly("org.enginehub.piston.core-ap:runtime:${pistonVersion}")
 }
 
 version = "1.0.1"
