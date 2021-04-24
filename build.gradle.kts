@@ -33,17 +33,11 @@ repositories {
     }
 }
 
-val pistonVersion = "0.5.6"
-
 dependencies {
     compileOnly("com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT")
     implementation(kotlin("stdlib-jdk8"))
     // Testing renovate from here
-    compileOnly("org.enginehub.piston:default-impl:${pistonVersion}")
-    compileOnly("org.enginehub.piston:core:${pistonVersion}")
-    compileOnly("org.enginehub.piston.core-ap:processor:${pistonVersion}")
-    compileOnly("org.enginehub.piston.core-ap:annotations:${pistonVersion}")
-    compileOnly("org.enginehub.piston.core-ap:runtime:${pistonVersion}")
+    compileOnly(libs.piston)
 }
 
 version = "1.0.1"

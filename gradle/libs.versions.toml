@@ -1,0 +1,5 @@
+[versions]
+piston = "0.5.5"
+
+[libraries]
+piston = { group = "org.enginehub.piston", name = "default-impl", version.ref = "piston" }
