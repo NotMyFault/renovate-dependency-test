@@ -5,7 +5,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     id("java")
     id("org.cadixdev.licenser") version "0.6.1"
-    id("net.minecrell.plugin-yml.bukkit") version "0.3.0"
+    id("net.minecrell.plugin-yml.bukkit") version "0.5.2"
     kotlin("jvm") version "1.5.31"
 }
 
